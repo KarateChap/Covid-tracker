@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>COVID19 Awareness Website</title>
+
+        <!-- Font Awesome Icons -->
+        <link rel="stylesheet" href="./css/all.css">
+
+        <!-- Owl-Carousel -->
+        <link rel="stylesheet" href="./css/owl.carousel.min.css">
+        <link rel="stylesheet" href="./css/owl.theme.default.min.css">
+        
+        <!-- ------------------ AOS Library -------------------->
+        <link rel="stylesheet" href="./css/aos.css">
+        
+        <!--Custom Style-->
+        <link rel="stylesheet" href="./css/Style.css">
+
+        <link rel="stylesheet" href="./css/tracker.css">
+
+</head>
+<body bgcolor=#F3F2F1>
+    <!-- --------------- Navigation --------------- -->
+
+    <nav class="nav">
+        <div class="nav-menu flex-row">
+            <div class="nav-brand">
+                <a href="index.html" class="text-gray">COVID19 Awareness</a>
+            </div>
+            <div class="toggle-collapse">
+                <div class="toggle-icons">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+            <div>
+                <ul class="nav-items">
+                    <li class="nav-link">
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="donation.html">Donate</a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="tracker.html">COVID19 Tracker</a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#contactus">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="social text-gray">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </nav>
+    
+    <section class="tracker-title">
+        <div data-aos="fade-up" data-aos-delay="100">
+            <h1>WORLDWIDE COVID19 TRACKER</h1>
+        </div>
+        <div class="toggleBox">
+            <div class="toggle">
+                <input type="checkbox" id="slider" value="checked" onclick="return displayData();">
+                <label for="" class="onbtn">Today</label>
+                <label for="" class="offbtn">Yesterday</label>
+            </div>
+        </div>
+    </section>
+    <section>
+        
+        <div class="country-container" data-aos="fade-up" data-aos-delay="200">
+            <div class="headlines">
+                <h1>PHILIPPINES COVID19 CASES</h1>
+                <img src=".//assets/tracker/philippines.png" class="tracker-img">
+                <h1 id="totalCases-ph">Total Cases</h1>
+                <h1 id="newCases-ph">New Cases</h1>
+                <h1 id="totalDeath-ph">Total Death</h1>
+                <h1 id="newDeath-ph">New Death</h1>
+                <h1 id="totalRecovered-ph" class="recovered">Total Recovered</h1>
+            </div>
+
+            <div class="headlines" data-aos="fade-up" data-aos-delay="200">
+                <h1>WORLD COVID19 CASES</h1>
+                <img src=".//assets/tracker/world.png" class="tracker-img">
+                <h1 id="totalCases-world">Total Cases</h1>
+                <h1 id="newCases-world">New Cases</h1>
+                <h1 id="totalDeath-world">Total Death</h1>
+                <h1 id="newDeath-world">New Death</h1>
+                <h1 id="totalRecovered-world" class="recovered">Total Recovered</h1>
+            </div>
+
+            <div class="headlines" data-aos="fade-up" data-aos-delay="200">
+                <h1>Search By Country/Continent:</h1>       
+                    <div class="search-input">
+                        <input type="text" class="input-element" 
+                        placeholder="Ex. Philippines" id="search-country">
+                    </div>
+                    <div class="search-button">
+                        <button onclick="searchValidation();" >Search</button>
+                    </div>
+                <h1 id="totalCases-custom">Total Cases:</h1>
+                <h1 id="newCases-custom">New Cases:</h1>
+                <h1 id="totalDeath-custom">Total Death:</h1>
+                <h1 id="newDeath-custom">New Death:</h1>
+                <h1 id="totalRecovered-custom" class="recovered">Total Recovered:</h1>
+            </div>
+        </div>
+
+
+
+        <div class="clr"></div>
+        <div data-aos="fade-up" data-aos-delay="100" class="tracker-title">
+            <h1>BY COUNTRY TALLY</h1>
+            <h4>Click Header to Sort</h4>
+        </div>
+
+            <table class="covid-table" data-aos="fade-up" data-aos-delay="200">
+                <thead>
+                    <tr>
+                        <th onclick="sortColumn('country')">Country</th>
+                        <th onclick="sortColumn('cases')">Total Cases</th>
+                        <th onclick="sortColumn('todayCases')">New Cases</th>
+                        <th onclick="sortColumn('deaths')">Total Death</th>
+                        <th onclick="sortColumn('todayDeaths')">New Death</th>
+                        <th onclick="sortColumn('recovered')"> Total Recovered</th>
+                        <th onclick="sortColumn('active_cases')">Active Cases</th>
+                        <th onclick="sortColumn('critical_cases')">Critical Cases</th>  
+                    </tr>
+                </thead>
+                <tbody id="tableData"></tbody>
+            </table>
+        </div>
+    </section>
+    <br>
+    <center><h4 id="credits">API from: &copy; https://corona.lmao.ninja/</h4></center>
+    <br>
+    <br>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="about-us" data-aos="fade-right" data-aos-delay="200">
+                <h2>About us</h2>
+                <p>We are an organization of non-government related individuals that are pursuing to provide news and information regarding COVID19 Updates and seeks to help Filipino frontliners through donations.</p>
+            </div>
+            <div class="newsletter" data-aos="fade-right" data-aos-delay="200">
+                <h2>Newsletter</h2>
+                <p>Stay updated wih the latest news and updates about COVID19, subscribe to our Newsletter</p>
+            </div>
+            <div class="instagram" data-aos="fade-left" data-aos-delay="200">
+                <h2>Instagram</h2>
+                <div class="flex-row">
+                    <img src="./assets/instagram/thumb-card3.png" alt="insta1">
+                    <img src="./assets/instagram/thumb-card4.png" alt="insta1">
+                    <img src="./assets/instagram/thumb-card5.png" alt="insta1">
+                </div>
+                <div class="flex-row">
+                    <img src="./assets/instagram/thumb-card6.png" alt="insta1">
+                    <img src="./assets/instagram/thumb-card7.png" alt="insta1">
+                    <img src="./assets/instagram/thumb-card8.png" alt="insta1">
+                </div>
+            </div>
+            <div class="follow" data-aos="fade-left" data-aos-delay="200">
+                <h2>Follow us</h2>
+                <p>Let us be Social</p>
+                <div>
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-youtube"></i>
+                </div>
+            </div>
+        </div>
+        <div class="rights flex-row">
+            <h4 class="text-gray" id="contactus">
+                Copyright ©2020 All rights reserved | Created by RGM 
+            </h4>
+        </div>
+        <div class="move-up">
+            <span><i class="fas fa-arrow-circle-up fa-2x"></i></span>
+        </div>
+    </footer>
+
+
+    <!-- ------x--------- Navigation -------x-------- -->
+    
+        <!-- -------x--------- Footer -------x------- -->
+    <!--Jquery Library file-->
+    <script src="./js/Jquery3.5.0.min.js"></script>
+
+    <!-- Owl-Carousel js -->
+    <script src="./js/owl.carousel.min.js"></script>
+  
+    <!-- ------------AOS js Library------------- -->
+    <script src="./js/aos.js"></script>
+
+    <!-- Custom Javascript file -->
+    <script src="./js/main.js"></script>
+
+    <script src="./js/tracker.js"></script>
+</body>
+</html>
